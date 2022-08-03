@@ -31,10 +31,11 @@ $("#hour16 .description").val(localStorage.getItem("hour16"));
 $("#hour17 .description").val(localStorage.getItem("hour17"));
 
 //Color coordinate time blocks for past hours, current hour, and future hours. Gray for past, red for present, green for future
-function background () {
+function timeColor () {
     var present = moment().hours();
     $(".time-block").each(function () {
         var time = parseInt($(this).attr("id"));
+
         if (time < present) {
             $(this).addClass("past");
         } 
@@ -53,4 +54,4 @@ function background () {
     })
  }
  
- background ();
+ timeColor ();
