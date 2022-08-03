@@ -29,3 +29,28 @@ $("#hour14 .description").val(localStorage.getItem("hour14"));
 $("#hour15 .description").val(localStorage.getItem("hour15"));
 $("#hour16 .description").val(localStorage.getItem("hour16"));
 $("#hour17 .description").val(localStorage.getItem("hour17"));
+
+//Color coordinate time blocks for past hours, current hour, and future hours. Gray for past, red for present, green for future
+function background () {
+    var present = moment().hours();
+    $(".time-block").each(function () {
+        var time = parseInt($(this).attr("id"));
+        if (time < present) {
+            $(this).addClass("past");
+        } 
+        
+        else if (time === present) {
+            $(this).removeClass("past");
+            $(this).removeClass("future");
+            $(this).addClass("present");
+        } 
+        
+        else {
+            $(this).removeClass("past");
+            $(this).removeClass("present");
+            $(this).addClass("future");
+        }
+    })
+ }
+ 
+ background ();
